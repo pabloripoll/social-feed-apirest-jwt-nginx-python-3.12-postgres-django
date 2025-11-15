@@ -9,7 +9,29 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
-class TestDatabaseView(APIView):
+class CheckV1View(APIView):
+    """
+    GET /api/v1/
+    Attempts a simple version return.
+    """
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs): # <- accepts version and any other kwargs
+        try:
+            return Response({
+                "message": "API v1 enabled.",
+                "status": True,
+                "datetime": timezone.now().strftime('%Y-%m-%d %H:%M:%S'),
+            })
+        except Exception as exc:
+            return Response({
+                "message": "API v1 is disabled.",
+                "status": False,
+                "error": str(exc),
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class CheckDatabaseView(APIView):
     """
     GET /api/v1/test/database
     Attempts a simple DB query (SELECT 1) and returns status.
@@ -22,17 +44,20 @@ class TestDatabaseView(APIView):
                 cursor.execute("SELECT 1")
                 row = cursor.fetchone()
             return Response({
-                "ok": True,
-                "db_response": row,
-                "time": timezone.now(),
+                "message": "API successfully connect to database.",
+                "connection": True,
+                "result": row,
+                "datetime": timezone.now().strftime('%Y-%m-%d %H:%M:%S'),
             })
         except Exception as exc:
             return Response({
-                "ok": False,
+                "message": "API failed to connect to database.",
+                "connection": False,
                 "error": str(exc),
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class SendMailTestView(APIView):
+
+class CheckSendMailView(APIView):
     """
     POST /api/v1/test/send-mail
     Sends a test email via configured SMTP backend (MailHog).
@@ -68,12 +93,15 @@ class SendMailTestView(APIView):
                 fail_silently=False,
             )
             return Response({
-                "ok": True,
+                "message": "Test email has been sent.",
+                "sent": True,
                 "sent_count": sent,
                 "recipients": recipients,
+                "datetime": timezone.now().strftime('%Y-%m-%d %H:%M:%S'),
             })
         except Exception as exc:
             return Response({
-                "ok": False,
+                "message": "Test email failed.",
+                "sent": False,
                 "error": str(exc),
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

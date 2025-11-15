@@ -4,6 +4,7 @@ from datetime import timedelta
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 load_dotenv(BASE_DIR / ".env")
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "replace-this-for-prod")
@@ -93,8 +94,8 @@ REST_FRAMEWORK = {
     # Use URLPathVersioning so request.version is populated from the URL
     "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.URLPathVersioning",
     "DEFAULT_VERSION": "v1",
-    # Optional: you can limit allowed versions if desired
-    #"ALLOWED_VERSIONS": ("v1",),
+    # Optional: limit allowed versions
+    "ALLOWED_VERSIONS": ("v1",),
 }
 
 SIMPLE_JWT = {

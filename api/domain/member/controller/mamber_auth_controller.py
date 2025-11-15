@@ -25,7 +25,7 @@ from api.domain.member.request.member_refresh_token_request import MemberRefresh
 from api.domain.member.request.member_logout_request import MemberLogoutRequest
 
 
-class MemberRegisterAPIView(APIView):
+class MemberRegisterView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
@@ -88,7 +88,7 @@ class MemberRegisterAPIView(APIView):
                             status=status.HTTP_409_CONFLICT)
 
 
-class MemberActivationCodeAPIView(APIView):
+class MemberActivationCodeView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
@@ -114,7 +114,7 @@ class MemberActivationCodeAPIView(APIView):
         return Response({"email": user.email, "status": "Account activation has been activated."}, status=status.HTTP_202_ACCEPTED)
 
 
-class MemberLoginAPIView(APIView):
+class MemberLoginView(APIView):
     permission_classes = [permissions.AllowAny]
 
     # jwt_time in minutes (smaller/alternate expiration time)
@@ -174,7 +174,7 @@ class MemberLoginAPIView(APIView):
         return Response({"token": access_token, "refresh": refresh_token, "expires_in": expires_in}, status=status.HTTP_200_OK)
 
 
-class MemberRefreshTokenAPIView(APIView):
+class MemberRefreshTokenView(APIView):
     permission_classes = [permissions.AllowAny]
     jwt_time = getattr(settings, "JWT_TIME_MINUTES", 60)
 
@@ -224,7 +224,7 @@ class MemberRefreshTokenAPIView(APIView):
         return Response({"token": new_access, "expires_in": expires_in, "token_expired": None}, status=status.HTTP_202_ACCEPTED)
 
 
-class MemberLogoutAPIView(APIView):
+class MemberLogoutView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
@@ -256,7 +256,7 @@ class MemberLogoutAPIView(APIView):
         return Response({"token_expired": refresh_token}, status=status.HTTP_202_ACCEPTED)
 
 
-class MemberWhoAmIAPIView(APIView):
+class MemberWhoAmIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
