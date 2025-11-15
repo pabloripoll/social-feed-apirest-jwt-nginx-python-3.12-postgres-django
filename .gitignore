@@ -37,8 +37,6 @@ __pycache__/
 *.pyd
 *.sqlite3
 venv/
-.env
-.env.*
 .venv/
 ENV/
 env/
