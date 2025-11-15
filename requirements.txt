@@ -1,0 +1,7 @@
+django>=4.2
+djangorestframework>=3.14
+djangorestframework-simplejwt>=5.0
+python-dotenv>=1.0.0        # optional, for loading .env
+django-cors-headers>=4.0.0  # optional, if you need CORS
+psycopg2-binary>=2.9.0      # only if you use PostgreSQL
+gunicorn>=20.1.0            # optional, for production
