@@ -71,6 +71,14 @@ else:
         }
     }
 
+# map app labels to custom migration modules
+MIGRATION_MODULES = {
+    'geo': 'app.domain.geo.database.migrations',
+    'user': 'app.domain.user.database.migrations',
+    'admin': 'app.domain.admin.database.migrations',
+    'member': 'app.domain.member.database.migrations',
+}
+
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = "en-us"
