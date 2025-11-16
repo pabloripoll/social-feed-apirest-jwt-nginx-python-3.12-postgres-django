@@ -11,11 +11,11 @@ urlpatterns = [
     path("check/send-mail", CheckController.CheckSendMailView.as_view(), name="check-send-mail"),
 
     # Member auth endpoints (api/v1/auth/)
-    path("auth/register", MemberRegisterView(), name="auth-register"),
-    path("auth/login", MemberLoginView(), name="auth-login"),
-    path("auth/activation-code", MemberActivationCodeView(), name="auth-activation-code"),
-    path("auth/refresh", MemberRefreshTokenView(), name="auth-refresh-token"),
-    path("auth/logout", MemberLogoutView(), name="auth-logout"),
-    path("auth/whoami", MemberWhoAmIView(), name="auth-whoami"),
+    path("auth/register", MemberRegisterView.as_view(), name="auth-register"),
+    path("auth/login", MemberLoginView.as_view(), name="auth-login"),
+    path("auth/activation-code", MemberActivationCodeView.as_view(), name="auth-activation-code"),
+    path("auth/refresh", MemberRefreshTokenView.as_view(), name="auth-refresh-token"),
+    path("auth/logout", MemberLogoutView.as_view(), name="auth-logout"),
+    path("auth/whoami", MemberWhoAmIView.as_view(), name="auth-whoami"),
 
 ]
