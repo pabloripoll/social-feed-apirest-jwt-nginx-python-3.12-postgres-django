@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.domain.member.model.member_notification import MemberNotification
+from api.domain.member.models.member_notification import MemberNotification
 
 class MemberNotificationObject(serializers.ModelSerializer):
     class Meta:

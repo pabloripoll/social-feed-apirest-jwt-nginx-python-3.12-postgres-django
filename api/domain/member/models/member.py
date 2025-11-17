@@ -1,6 +1,6 @@
 from django.db import models, transaction, IntegrityError
-from api.domain.user.model.user import User
-from api.domain.geo.model.geo_region import GeoRegion
+from api.domain.user.models.user import User
+from api.domain.geo.models.geo_region import GeoRegion
 import time
 import secrets
 

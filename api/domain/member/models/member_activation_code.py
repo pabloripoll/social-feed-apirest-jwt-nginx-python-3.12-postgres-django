@@ -3,7 +3,7 @@ from typing import Optional
 
 from django.db import models, transaction, IntegrityError
 from django.conf import settings
-from api.domain.user.model.user import User
+from api.domain.user.models.user import User
 import secrets
 
 

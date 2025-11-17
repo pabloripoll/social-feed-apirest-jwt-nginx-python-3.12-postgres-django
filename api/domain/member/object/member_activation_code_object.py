@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.domain.member.model.member_activation_code import MemberActivationCode
+from api.domain.member.models.member_activation_code import MemberActivationCode
 
 class MemberActivationCodeObject(serializers.ModelSerializer):
     class Meta:

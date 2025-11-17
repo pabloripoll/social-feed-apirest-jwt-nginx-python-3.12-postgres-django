@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.domain.member.model.member import Member
+from api.domain.member.models.member import Member
 from api.domain.member.object.member_profile_object import MemberProfileObject
 
 class MemberObject(serializers.ModelSerializer):

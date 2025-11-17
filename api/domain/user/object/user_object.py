@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.base_user import BaseUserManager
-from api.domain.user.model.user import User
+from api.domain.user.models.user import User
 
 class UserObject(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, min_length=8)

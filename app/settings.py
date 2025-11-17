@@ -25,6 +25,10 @@ INSTALLED_APPS = [
     "api",
     # Domains
     "api.domain.geo",
+    "api.domain.user",
+    "api.domain.admin",
+    "api.domain.member",
+    "api.domain.feed",
 ]
 
 MIDDLEWARE = [

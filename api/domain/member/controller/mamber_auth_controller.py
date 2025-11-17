@@ -11,12 +11,12 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken, OutstandingToken
 
-from api.domain.user.model.user import User
-from api.domain.geo.model.geo_region import GeoRegion
-from api.domain.member.model.member import Member
-from api.domain.member.model.member_activation_code import MemberActivationCode
-from api.domain.member.model.member_profile import MemberProfile
-from api.domain.member.model.member_access_log import MemberAccessLog
+from api.domain.user.models.user import User
+from api.domain.geo.models.geo_region import GeoRegion
+from api.domain.member.models.member import Member
+from api.domain.member.models.member_activation_code import MemberActivationCode
+from api.domain.member.models.member_profile import MemberProfile
+from api.domain.member.models.member_access_log import MemberAccessLog
 
 from api.domain.member.request.member_register_request import MemberRegisterRequest
 from api.domain.member.request.member_activation_code_request import MemberActivationCodeRequest

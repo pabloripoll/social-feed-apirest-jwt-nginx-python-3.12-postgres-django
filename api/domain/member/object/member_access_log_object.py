@@ -1,8 +1,8 @@
 from django.utils import timezone
 from rest_framework import serializers
 
-from api.domain.user.model.user import User
-from api.domain.user.model.member_access_log import MemberAccessLog
+from api.domain.user.models.user import User
+from api.domain.user.models.member_access_log import MemberAccessLog
 
 
 class MemberAccessLogSerializer(serializers.ModelSerializer):

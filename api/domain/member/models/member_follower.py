@@ -1,5 +1,5 @@
 from django.db import models
-from api.domain.user.model.user import User
+from api.domain.user.models.user import User
 
 class MemberFollower(models.Model):
     id = models.BigAutoField(primary_key=True)
