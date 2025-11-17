@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
     "api",
+    # Domains
+    "api.domain.geo",
 ]
 
 MIDDLEWARE = [
@@ -78,10 +80,10 @@ else:
 
 # map app labels to custom migration modules
 MIGRATION_MODULES = {
-    'geo': 'app.domain.geo.database.migrations',
-    'user': 'app.domain.user.database.migrations',
-    'admin': 'app.domain.admin.database.migrations',
-    'member': 'app.domain.member.database.migrations',
+    'geo': 'api.domain.geo.database.migrations',
+    'user': 'api.domain.user.database.migrations',
+    'admin': 'api.domain.admin.database.migrations',
+    'member': 'api.domain.member.database.migrations',
 }
 
 AUTH_PASSWORD_VALIDATORS = []
