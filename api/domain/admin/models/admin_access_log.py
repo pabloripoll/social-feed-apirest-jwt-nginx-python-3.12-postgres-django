@@ -3,7 +3,7 @@ from api.domain.user.models import User
 
 class AdminAccessLog(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, db_column="user_id", related_name="admin_access_logs")
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, db_column="user_id", related_name="admin_access_logs")
     is_terminated = models.BooleanField(default=False)
     is_expired = models.BooleanField(default=False)
     expires_at = models.DateTimeField(db_index=True)

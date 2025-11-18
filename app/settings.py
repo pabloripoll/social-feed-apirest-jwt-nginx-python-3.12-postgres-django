@@ -88,6 +88,7 @@ MIGRATION_MODULES = {
     'user': 'api.domain.user.database.migrations',
     'admin': 'api.domain.admin.database.migrations',
     'member': 'api.domain.member.database.migrations',
+    'feed': 'api.domain.feed.database.migrations',
 }
 
 AUTH_PASSWORD_VALIDATORS = []
