@@ -112,19 +112,42 @@ startretries=0
 ```
 <br>
 
+## Python VENV shortcut
+
+File *(chmod +x)*
+```bash
+#!/bin/sh
+. /var/www/venv/bin/activate
+exec python /var/www/manage.py "$@"
+```
+
+Execute Django or python commands inside the container by:
+```bash
+$ make apirest-ssh
+
+/var/www $ ./pyvenv [command]
+```
+
 ### Migrations
 
-Notes about migrations and existing SQL
+Migration are located into ./api/domain/[domain-name]/database/migrations/...
 
-Option A (recommended if you want Django to manage schema):
+Run the migrations by accessing into container
+```bash
+$ make apirest-ssh
 
-- Add each domain package to INSTALLED_APPS or register an app (e.g., "apirest.api") that contains these models.
-- python manage.py makemigrations
-- python manage.py migrate This will create migration files automatically from these models.
+# show migrations
+/var/www $ ./pyvenv showmigrations
 
-Option B (you already have SQL and want to keep using it):
+# create migration from model
+/var/www $ ./pyvenv makemigrations {model}
 
-- Create a migration that runs your SQL directly using migrations.RunSQL. Example migration file:
+# show plan migration
+/var/www $ ./pyvenv migrate --plan
+
+# run migrations
+/var/www $ ./pyvenv migrate
+```
 <br><br>
 
 ### Controller
@@ -157,3 +180,10 @@ Notes and details
 - The raw integer PK for that relation is available as `member.user_id_id`.
     - To get all **Member** rows for user id 123:
     - Member.objects.filter(user_id=123) # Django accepts an int for an FK lookup or user = User.objects.get(pk=123); user.members.all() # uses related_name="members"
+
+## DDD / Module
+
+When adding a new domain or feature module,
+```bash
+$ ./pyvenv shell -c "from django.conf import settings; import pprint; pprint.pprint(settings.INSTALLED_APPS)"
+```
